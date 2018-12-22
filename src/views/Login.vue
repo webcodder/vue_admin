@@ -6,7 +6,51 @@
 <!--解决办法：给submit加上 .native 修饰符-->
 
 <!--<el-form @submit.navite="newsubmit">-->
+<!--addgroupList(formName) {-->
+<!--this.$refs[formName].validate((valid) => {-->
+<!--if (valid) {-->
+<!--const groupName = xxxxxxxxxxxx;-->
+<!--const description = xxxxxxxxxxxx;-->
+<!--axios({-->
+<!--method: 'post',-->
+<!--url: 'xxxxxxxxxxxxxxxxxxxxx',-->
+<!--data: {-->
+<!--groupName: xxxxxxxxxxxxx,-->
+<!--groupDescription: xxxxxxxxxxxxxxx-->
+<!--}-->
+<!--}).then(res => {-->
+<!--this.creatGroup = false;-->
+<!--this.searchGroupName = '';-->
+<!--this.initData();-->
+<!--}).catch(error => {-->
+<!--console.log('网络错误，不能访问');-->
+<!--});-->
+<!--} else {-->
+<!--console.log('error submit!!');-->
+<!--return false;-->
+<!--}-->
+<!--});-->
+<!--},-->
 
+<!--let flag = true;-->
+<!--if (this.$refs[formName] instanceof Array && this.$refs[formName].length > 0) {-->
+<!--this.$refs[formName].forEach((obj, index) => {-->
+<!--obj.validate((valid) => {-->
+<!--if (valid) {-->
+<!--console.log('验证成功！');-->
+<!--} else {-->
+<!--console.log('error submit!!');-->
+<!--flag = false;-->
+<!--return false;-->
+<!--}-->
+<!--});-->
+<!--});-->
+
+<!--if (flag) {-->
+<!--this.secondDialog = false;-->
+<!--this.thirdDialog = true;-->
+<!--}-->
+<!--}-->
 
 <template>
     <div class="login">
@@ -114,7 +158,7 @@ export default {
   text-align: center;
 }
 .form_container .manage_tip .title {
-  font-family: "Microsoft YaHei";
+  /*font-family: "Microsoft YaHei";*/
   font-weight: bold;
   font-size: 26px;
   color: #fff;
@@ -124,7 +168,7 @@ export default {
   background-color: #fff;
   padding: 20px 40px 20px 20px;
   border-radius: 5px;
-  box-shadow: 0px 5px 10px #cccc;
+  box-shadow: 0 5px 10px #cccc;
 }
 
 .submit_btn {
