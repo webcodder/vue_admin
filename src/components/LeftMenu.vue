@@ -67,7 +67,10 @@ export default {
               icon: "fa-money",
               name: "test",
               path: "test",
-              children: [{ path: "test", name: "test" }]
+              children: [
+                  { path: "test", name: "test" },
+                  // { path: "sx", name: "sx" },
+              ]
           }
       ]
     };

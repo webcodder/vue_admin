@@ -1,57 +1,3 @@
-<!--<el-form @submit="newsubmit">-->
-    <!--<el-form-item size="large">-->
-        <!--<el-button type="primary" native-type="submit" >立即创建</el-button>-->
-    <!--</el-form-item>-->
-<!--</el-form>-->
-<!--解决办法：给submit加上 .native 修饰符-->
-
-<!--<el-form @submit.navite="newsubmit">-->
-<!--addgroupList(formName) {-->
-<!--this.$refs[formName].validate((valid) => {-->
-<!--if (valid) {-->
-<!--const groupName = xxxxxxxxxxxx;-->
-<!--const description = xxxxxxxxxxxx;-->
-<!--axios({-->
-<!--method: 'post',-->
-<!--url: 'xxxxxxxxxxxxxxxxxxxxx',-->
-<!--data: {-->
-<!--groupName: xxxxxxxxxxxxx,-->
-<!--groupDescription: xxxxxxxxxxxxxxx-->
-<!--}-->
-<!--}).then(res => {-->
-<!--this.creatGroup = false;-->
-<!--this.searchGroupName = '';-->
-<!--this.initData();-->
-<!--}).catch(error => {-->
-<!--console.log('网络错误，不能访问');-->
-<!--});-->
-<!--} else {-->
-<!--console.log('error submit!!');-->
-<!--return false;-->
-<!--}-->
-<!--});-->
-<!--},-->
-
-<!--let flag = true;-->
-<!--if (this.$refs[formName] instanceof Array && this.$refs[formName].length > 0) {-->
-<!--this.$refs[formName].forEach((obj, index) => {-->
-<!--obj.validate((valid) => {-->
-<!--if (valid) {-->
-<!--console.log('验证成功！');-->
-<!--} else {-->
-<!--console.log('error submit!!');-->
-<!--flag = false;-->
-<!--return false;-->
-<!--}-->
-<!--});-->
-<!--});-->
-
-<!--if (flag) {-->
-<!--this.secondDialog = false;-->
-<!--this.thirdDialog = true;-->
-<!--}-->
-<!--}-->
-
 <template>
     <div class="login">
         <section class="form_container">
@@ -102,39 +48,60 @@ export default {
     };
   },
   methods: {
-    submitForm(formName) {
-      this.$refs[formName].validate(valid => {
-        if (valid) {
-          this.$axios.post("/api/admin/user/login", this.loginUser).then(res => {
-            console.log(res);
-            // 登录成功
-            const { token } = res.data;
-            localStorage.setItem("eleToken", token);
-
-            // 解析token
-            // const decode = jwt_decode(token);
-
-            // 存储数据
-            // this.$store.dispatch("setIsAutnenticated", !this.isEmpty(decode));
-            // this.$store.dispatch("setUser", decode);
-
-            // 页面跳转
-            this.$router.push("/index");
-          });
-        } else {
-          console.log("error submit!!");
-          return false;
-        }
-      });
+      submitForm(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+              this.$axios({
+                  method: 'post',
+                  url: '/api/admin/user/login',
+                  data: {
+                      phone: this.loginUser.phone,
+                      password: this.loginUser.password
+                  }
+              }).then(res => {
+                  console.log(res);
+              }).catch(err => {
+                  console.log('网络错误，不能访问', err);
+              });
+          } else {
+              console.log('error submit!!');
+              return false;
+          }
+        });
     },
-    isEmpty(value) {
-      return (
-        value === undefined ||
-        value === null ||
-        (typeof value === "object" && Object.keys(value).length === 0) ||
-        (typeof value === "string" && value.trim().length === 0)
-      );
-    }
+    // submitForm(formName) {
+    //   this.$refs[formName].validate(valid => {
+    //     if (valid) {
+    //       this.$axios.post("/api/admin/user/login", this.loginUser).then(res => {
+    //         console.log(res);
+    //         // 登录成功
+    //         const { token } = res.data;
+    //         localStorage.setItem("eleToken", token);
+    //
+    //         // 解析token
+    //         // const decode = jwt_decode(token);
+    //
+    //         // 存储数据
+    //         // this.$store.dispatch("setIsAutnenticated", !this.isEmpty(decode));
+    //         // this.$store.dispatch("setUser", decode);
+    //
+    //         // 页面跳转
+    //         this.$router.push("/index");
+    //       });
+    //     } else {
+    //       console.log("error submit!!");
+    //       return false;
+    //     }
+    //   });
+    // },
+    // isEmpty(value) {
+    //   return (
+    //     value === undefined ||
+    //     value === null ||
+    //     (typeof value === "object" && Object.keys(value).length === 0) ||
+    //     (typeof value === "string" && value.trim().length === 0)
+    //   );
+    // }
   }
 };
 </script>
