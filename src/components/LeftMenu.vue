@@ -40,12 +40,6 @@ export default {
     return {
       items: [
           {
-              icon: "fa-asterisk",
-              name: "信息管理",
-              path: "info",
-              children: [{ path: "infoshow", name: "个人信息" }]
-          },
-          {
               icon: "fa-money",
               name: "资料管理",
               path: "manager",
@@ -56,6 +50,13 @@ export default {
                   { path: "account_manage", name: "账号管理" }
               ]
           },
+          {
+              icon: "fa-asterisk",
+              name: "信息管理",
+              path: "info",
+              children: [{ path: "infoshow", name: "个人信息" }]
+          },
+
           {
               icon: "fa-money",
               name: "资金管理",
@@ -76,36 +77,12 @@ export default {
 
 <style scoped>
 .menu_page {
-    /*flex: 0 0 230px;*/
-    /*width: 230px;*/
-  /*position: fixed;*/
-  /*top: 71px;*/
-  /*left: 0;*/
-  /*min-height: 100%;*/
-  /*background-color: #324057;*/
-  /*z-index: 99;*/
+    width: 100%;
+    height: 100%;
+    background-color: #324057;
 }
 
-.fa-margin {
-  margin-right: 5px;
+.el-menu-vertical-demo{
+    border: none;
 }
-.el-menu-vertical-demo:not(.el-menu--collapse) {
-  width: 180px;
-  min-height: 400px;
-}
-.el-menu-vertical-demo {
-  width: 35px;
-}
-/*.el-submenu .el-menu-item {*/
-  /*min-width: 180px;*/
-/*}*/
-
-.el-menu-item i, .el-submenu__title i{
-    color: #fff;
-    margin-right: 12px;
-}
-
-    .menu_child{
-        /*margin-left: 15px;*/
-    }
 </style>

@@ -1,26 +1,13 @@
 <template>
-    <!--<section class="container f-oh">-->
-        <!--<HeadNav></HeadNav>-->
-
-        <!--<div class="main">-->
-            <!--<LeftMenu></LeftMenu>-->
-
-            <!--<div class="right_container">-->
-                <!--<transition name="fade"  mode="out-in">-->
-                    <!--<router-view></router-view>-->
-                <!--</transition>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</section>-->
-    <el-container class="container">
+    <el-container class="container f-pr">
         <el-header class="header f-oh">
             <HeadNav></HeadNav>
         </el-header>
         <el-container>
-            <el-aside class="aside">
+            <el-aside class="aside f-oh">
                 <LeftMenu></LeftMenu>
             </el-aside>
-            <el-main class="main">
+            <el-main class="main f-oh">
                 <router-view></router-view>
             </el-main>
         </el-container>
@@ -44,18 +31,20 @@
 <style scoped>
     .container {
         width: 100%;
-        height: auto;
+        height: 100%;
     }
 
     .header{
         padding: 0;
+        border-bottom: 1px solid #1f2d3d;
     }
 
     .aside {
-
+        flex: 0 0 230px;
+        width: 230px;
     }
 
     .main {
-        background-color: #E9EEF3;
+        padding: 0;
     }
 </style>

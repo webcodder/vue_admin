@@ -32,7 +32,7 @@
         用户账号会出现何种异常？有何种解决方法？
 -->
 
-    <section>
+    <section class="main_cont">
         <!-- 记录管理 -->
         <el-row class="toolbar bdr_radiu">
             <el-col :span="24" class="title">
